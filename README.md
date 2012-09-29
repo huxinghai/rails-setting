@@ -1,29 +1,37 @@
 # Rails::Setting
 
-TODO: Write a gem description
+设置支持mysql,mongoid 多种数据库
 
 ## Installation
 
 Add this line to your application's Gemfile:
 
-    gem 'rails-setting'
+    gem 'rails-setting',:github => "huxinghai1988/rails-setting"
 
 And then execute:
 
     $ bundle
 
-Or install it yourself as:
-
-    $ gem install rails-setting
-
 ## Usage
+1. 创建数据模型，例如:
 
-TODO: Write usage instructions here
+mysql 数据库
+    rails g model setting var:string value:string target_id:integer target_type:string
+or 
 
-## Contributing
+mongodb 数据库
+    class Setting
+        include Mongoid::Document
+        include Mongoid::Timestamps
+        field :var, :type => String
+        field :value, :type => String
+        belongs_to :target, :polymorphic => true 
+            
+    end
 
-1. Fork it
-2. Create your feature branch (`git checkout -b my-new-feature`)
-3. Commit your changes (`git commit -am 'Added some feature'`)
-4. Push to the branch (`git push origin my-new-feature`)
-5. Create new Pull Request
+2. 可以给某个用户设置
+
+    在用户模型添加下面两句
+        include RailsSetting
+        has_settings
+

@@ -4,9 +4,9 @@ require File.expand_path('../lib/rails-setting/version', __FILE__)
 Gem::Specification.new do |gem|
   gem.authors       = ["kaka"]
   gem.email         = ["huxinghai1988@qq.com"]
-  gem.description   = %q{fdsafdsa}
-  gem.summary       = %q{fdsafdsa}
-  gem.homepage      = ""
+  gem.description   = %q{rails setting support multi database}
+  gem.summary       = %q{rails setting support multi database}
+  gem.homepage      = "https://github.com/huxinghai1988/rails-setting"
 
   gem.files         = `git ls-files`.split($\)
   gem.executables   = gem.files.grep(%r{^bin/}).map{ |f| File.basename(f) }
