@@ -35,5 +35,6 @@ mongodb 数据库
 2. 可以给某个用户设置,在用户模型添加下面两句   
 
     include RailsSetting
+    
     has_settings
 
