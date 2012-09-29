@@ -14,8 +14,8 @@ module SettingFunctional
 			get_setting.first.destroy_all
 		end
 
-		def destroy(key)
-			get_setting(key).first.destroy
+		def destroy(key)			
+			get_setting(key).first.destroy_all
 		end
 
 		def all
@@ -59,7 +59,7 @@ module SettingFunctional
 		def get_setting(key = nil)
 			options = key.nil? ? {} : {:var => key.to_s} 		
 			options.merge!({:target_id => nil, :target_type => nil})
-			options.merge!({:target_id => target.id, :target_type => target.class}) unless target.nil?
+			options.merge!({:target_id => target.id, :target_type => target.class.name}) unless target.nil?
 
 			temp = Setting.where(options)
 			[temp, options]
