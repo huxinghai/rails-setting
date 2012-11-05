@@ -32,11 +32,11 @@ module SettingFunctional
             rule_method(method_name, *args)
         end
 
-        def value
+        Setting.instance_method :value do 
             YAML.load(self[:value])
         end
-
-        def value=(new_value)
+      
+        Setting.instance_method :value= do | new_value |    
             self[:value] = new_value.to_yaml
         end
 
