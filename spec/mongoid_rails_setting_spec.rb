@@ -24,7 +24,9 @@ describe Settings do
             Settings.password = "join"
             Settings.foo = "dom1"
             Settings.foo1 = "dom2"
-            Settings.all.length.should eq(3)
+
+            Settings.all.length.should eq(3)                   
+            Settings.all["foo"].should eq("dom1")
             Settings.destroy_all
             Settings.all.length.should eq(0)
         end
