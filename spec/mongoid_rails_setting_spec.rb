@@ -30,6 +30,13 @@ describe Settings do
             Settings.destroy_all
             Settings.all.length.should eq(0)
         end
+
+        it "test array data setting" do 
+            Settings.users = ["join", "kaka"]
+            Settings.users.is_a?(Array).should be_true
+            Settings.users.length.should eq(2)
+            Settings.users[0].should eq("join")
+        end
     end
 
     context "polymorphic setting value" do
