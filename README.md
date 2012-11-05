@@ -12,8 +12,7 @@ And then execute:
 
     $ bundle
 
-## Usage
-1. 创建数据模型，例如
+创建数据模型，例如:
 
     mysql 数据库
 
@@ -32,9 +31,23 @@ And then execute:
                 
         end
 
-2. 可以给某个用户设置,在用户模型添加下面两句   
+可以给某个用户设置,在用户模型添加下面两句:   
 
     include RailsSettings
-    
     has_settings
 
+
+## Usage
+
+设置语法:
+
+    Settings.admin_password = 'kaka'
+    Settings.foo            = 123
+
+获取设置:
+    
+    Settings.foo # returns 123
+
+获取所有设置: 
+    
+    Settings.all            # returns {'admin_password' => 'kaka', 'foo' => '123'}

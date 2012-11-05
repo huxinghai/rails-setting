@@ -20,11 +20,11 @@ module SettingFunctional
 
 		def all
 			keys = get_setting.first
-			keys.map do | k |
-				temp = {}
-				temp[k.var] = k.value				
-				temp
+			temp = {} 
+			keys.each do | k |				
+				temp[k.var] = k.value			
 			end
+			temp
 		end
 
 		def method_missing(method_name, *args)
