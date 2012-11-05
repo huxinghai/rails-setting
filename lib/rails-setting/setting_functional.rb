@@ -1,4 +1,3 @@
-require "yaml"
 module SettingFunctional
     module Method
         attr_accessor :target
@@ -23,7 +22,7 @@ module SettingFunctional
             keys = get_setting.first
             temp = {} 
             keys.each do | k |              
-                temp[k.var] = k.value           
+                temp[k.var] = format(k.value)
             end
             temp
         end
@@ -32,23 +31,25 @@ module SettingFunctional
             rule_method(method_name, *args)
         end
 
-        Setting.instance_method :value do 
-            YAML.load(self[:value])
-        end
-      
-        Setting.instance_method :value= do | new_value |    
-            self[:value] = new_value.to_yaml
+        private
+        def format(value)
+            YAML.load(value)
         end
 
-        private
+        def to_value(new_value)
+            new_value.to_yaml
+        end
+
         def get_key(key)
             temp = get_setting(key).first
-            temp.first.nil? ? nil : temp.first.value
+            temp.first.nil? ? nil : format(temp.first.value)
         end
 
         def add_key(key, value)
             setting = get_setting(key)
             _setting = setting.first
+            value = to_value(value)
+
             if _setting.first.nil? 
                 Setting.create!(setting.last.merge!({value: value})) 
             else
