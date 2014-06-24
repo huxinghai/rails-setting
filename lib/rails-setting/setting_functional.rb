@@ -51,7 +51,7 @@ module SettingFunctional
             value = to_value(value)
 
             if _setting.first.nil? 
-                Setting.create!(setting.last.merge!({value: value})) 
+                RailsSettings.klasss.create!(setting.last.merge!({value: value})) 
             else
                 _setting.first.update_attribute(:value, value)
             end
@@ -74,8 +74,8 @@ module SettingFunctional
             options = key.nil? ? {} : {:var => key.to_s}        
             options.merge!({:target_id => nil, :target_type => nil})
             options.merge!({:target_id => target.id, :target_type => target.class.name}) unless target.nil?
-
-            temp = Setting.where(options)
+            
+            temp = RailsSettings.klasss.where(options)
             [temp, options]
         end     
     end

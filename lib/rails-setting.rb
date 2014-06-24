@@ -4,8 +4,17 @@ require "rails-setting/settings"
 require "rails-setting/model_relaction"
 
 
-# module Rails
-#   module Setting
-#     # Your code goes here...
-#   end
-# end
+module RailsSettings
+  def self.klasss(model = nil)
+    @klasss = model unless model.nil?
+    if @klasss.nil? 
+      if defined?(Setting).nil?
+        raise "not defined setting model class..."
+      else
+        @klasss = Setting
+      end
+    end
+    @klasss
+  end
+end
+

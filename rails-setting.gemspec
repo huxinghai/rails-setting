@@ -14,4 +14,7 @@ Gem::Specification.new do |gem|
   gem.name          = "rails-setting"
   gem.require_paths = ["lib"]
   gem.version       = Rails::Setting::VERSION
+  gem.add_dependency 'rails'
+  gem.add_development_dependency "bundler", "~> 1.6"
+  gem.add_development_dependency "rake"
 end

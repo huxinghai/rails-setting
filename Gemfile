@@ -1,12 +1,14 @@
-source 'https://rubygems.org'
+source 'http://ruby.taobao.org'
 
 # Specify your gem's dependencies in rails-setting.gemspec
 gemspec
 
 gem "rails"
 
-group :test do
-  gem 'rspec-rails'
+group :development, :test do
+  gem 'rspec'  
   gem 'sqlite3'
-  gem 'mongoid'
+  gem 'mongoid'  
+  gem "pry"
+  gem 'debugger'
 end
